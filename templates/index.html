@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
+	<script>
+		$(function(){
+			var socket = io.connect("/event");
+			socket.on('connect', function (e) {
+				 $('body').append('<p>br create');
+			})
+			
+			socket.on('keyEvent', function (e) {
+				 $('body').append(e.key);
+			})
+      		var text ="<p> be click";
+ 
+      		$('#send').click(function(){socket.emit("keyEvent", {'key': text});})
+      		window.socket=socket;
+		})
+	</script>
+</head>
+<body>
+	<button id='send' vlaues = "send">ddd</button>
+</body>
+</html>
