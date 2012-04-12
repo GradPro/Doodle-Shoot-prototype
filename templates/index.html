@@ -9,20 +9,22 @@
 		$(function(){
 			var socket = io.connect("/event");
 			socket.on('connect', function (e) {
-				 $('body').append('<p>br create');
+				 $('body').append('<p>socket be created');
 			})
 			
 			socket.on('keyEvent', function (e) {
 				 $('body').append(e.key);
 			})
-      		var text ="<p> be click";
+      		var text1 ="<p>Button1 be click";
+      		var text2 ="<p>Button2 be click";
  
-      		$('#send').click(function(){socket.emit("keyEvent", {'key': text});})
-      		window.socket=socket;
+      		$('#send1').click(function(){socket.emit("keyEvent", {'key': text1});})
+      		$('#send2').click(function(){socket.emit("keyEvent", {'key': text2});})
 		})
 	</script>
 </head>
 <body>
-	<button id='send' vlaues = "send">ddd</button>
+	<button id='send1' vlaues = "send">button1</button>
+	<button id='send2' vlaues = "send">button2</button>
 </body>
 </html>

@@ -8,6 +8,6 @@ import os.path as path
 sys.path.append(path.dirname(__file__) + '/.lib')
 
 
-import flaskapp
-app = flaskapp.app
+import view
+app = view.app
 
